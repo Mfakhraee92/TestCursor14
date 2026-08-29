@@ -6,9 +6,21 @@
   <meta name="description" content="A simple, modern HTML5 website with clean design and responsive layout.">
   <title>My Website</title>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var theme = saved || (prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
 </head>
 <body>
   <header class="site-header">
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+      <span class="theme-toggle-label">Dark Mode</span>
+    </button>
     <h1>My Website</h1>
     <p>Simple, clean, and built with HTML5</p>
   </header>
@@ -88,5 +100,7 @@
   <footer class="site-footer">
     <p>&copy; 2026 My Website. All rights reserved.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
