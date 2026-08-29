@@ -21,6 +21,12 @@
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --radius: 0.5rem;
   --max-width: 960px;
+
+  /* Breakpoints (for reference) */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1200px;
 }
 
 html {
@@ -165,6 +171,10 @@ section p {
   padding: 0.75rem 1.75rem;
   border-radius: var(--radius);
   font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
   transition: background-color 0.2s, transform 0.15s;
 }
 
@@ -265,18 +275,153 @@ section p {
   margin: 0;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* ============================================
+   Responsive design — mobile-first breakpoints
+   ============================================ */
+
+/* Small phones (up to 480px) */
+@media (max-width: 480px) {
+  .site-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .site-header p {
+    font-size: 0.95rem;
+  }
+
+  main {
+    padding: 1.5rem 1rem;
+  }
+
+  section {
+    margin-bottom: 2rem;
+    scroll-margin-top: 3.5rem;
+  }
+
+  section h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero {
+    padding: 1.5rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.85rem 1rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .contact-form {
+    padding: 1.25rem;
+    max-width: 100%;
+  }
+
+  .site-footer {
+    padding: 1.25rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablets and small screens (up to 768px) */
+@media (max-width: 768px) {
   .site-nav ul {
     flex-direction: column;
     align-items: stretch;
+    padding: 0.5rem 1rem;
   }
 
   .site-nav a {
     text-align: center;
+    padding: 0.85rem 1rem;
   }
 
   .hero {
-    padding: 1.75rem 1.25rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    max-width: 100%;
+  }
+}
+
+/* Medium screens — tablets in landscape (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  main {
+    padding: 2rem 2rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-form {
+    max-width: 100%;
+  }
+}
+
+/* Large desktops (1025px and up) */
+@media (min-width: 1025px) {
+  :root {
+    --max-width: 1080px;
+  }
+
+  main {
+    padding: 3rem 2rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero {
+    padding: 3rem 2.5rem;
+  }
+}
+
+/* Extra-large screens (1200px and up) */
+@media (min-width: 1200px) {
+  :root {
+    --max-width: 1140px;
+  }
+
+  .site-header h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn,
+  .card {
+    transition: none;
+  }
+
+  .btn:hover,
+  .card:hover {
+    transform: none;
   }
 }
