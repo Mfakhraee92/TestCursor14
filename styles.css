@@ -155,7 +155,9 @@ body {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-.site-nav a.active {
+.site-nav a.active,
+.site-nav a.active:hover,
+.site-nav a.active:focus {
   color: #fff;
   background-color: var(--color-primary);
 }

@@ -32,3 +32,30 @@
 
   updateToggleButton(getTheme());
 })();
+
+(function () {
+  var navLinks = document.querySelectorAll(".site-nav a");
+
+  function setActiveLink(target) {
+    navLinks.forEach(function (link) {
+      link.classList.toggle("active", link === target);
+    });
+  }
+
+  function setActiveByHash() {
+    var hash = window.location.hash || "#home";
+    var target = document.querySelector('.site-nav a[href="' + hash + '"]');
+    if (target) {
+      setActiveLink(target);
+    }
+  }
+
+  navLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      setActiveLink(link);
+    });
+  });
+
+  window.addEventListener("hashchange", setActiveByHash);
+  setActiveByHash();
+})();
